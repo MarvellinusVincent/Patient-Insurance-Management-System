@@ -25,6 +25,7 @@ public class loginAndRegistration {
 			return "Error signing up user: " + e.getMessage();
 		}
 	}
+	//Sign up instructions in readme
 
 	@PostMapping("/signin")
 	public String signIn(@RequestBody AuthRequest request) {
