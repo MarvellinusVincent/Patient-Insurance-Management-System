@@ -15,7 +15,9 @@ public class loginAndRegistration {
 		try {
 			UserRecord.CreateRequest userRequest = new UserRecord.CreateRequest()
 					.setEmail(request.getEmail())
-					.setPassword(request.getPassword());
+					.setPassword(request.getPassword())
+					.setDisplayName(request.getDisplayName())
+					.setPhoneNumber(request.getPhoneNumber());
 			UserRecord userRecord = FirebaseAuth.getInstance().createUser(userRequest);
 			return "User signed up successfully with UID: " + userRecord.getUid();
 		} catch (FirebaseAuthException e) {
@@ -23,6 +25,7 @@ public class loginAndRegistration {
 			return "Error signing up user: " + e.getMessage();
 		}
 	}
+
 	@PostMapping("/signin")
 	public String signIn(@RequestBody AuthRequest request) {
 		try {
@@ -32,31 +35,6 @@ public class loginAndRegistration {
 		} catch (FirebaseAuthException e) {
 			e.printStackTrace();
 			return "Error signing in user: " + e.getMessage();
-		}
-	}
-
-	static class AuthRequest {
-		private String email;
-		private String password;
-		private String token;
-
-		public String getEmail() {
-			return email;
-		}
-		public void setEmail(String email) {
-			this.email = email;
-		}
-		public String getPassword() {
-			return password;
-		}
-		public void setPassword(String password) {
-			this.password = password;
-		}
-		public String getToken() {
-			return token;
-		}
-		public void setToken(String token) {
-			this.token = token;
 		}
 	}
 }
