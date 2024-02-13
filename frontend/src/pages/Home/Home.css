@@ -1,0 +1,62 @@
+header {
+    height: 10vh;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > h1 {
+    font-size: 20px;
+}
+
+header > h1 > span {
+    color: blueviolet;
+}
+
+header > nav > button {
+    background-color: blueviolet;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 1s;
+}
+
+header > nav > button:hover {
+    background-color: rgb(109, 33, 180);
+}
+
+header > nav > button > .nav-link {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+main {
+    height: 80vh;
+    background-image: url("../../assets/images/home-bg.jpg");
+    background-size: cover;
+    background-position: 25% 75%;
+    display: flex;
+    justify-content: center;
+}
+
+main > .home-introduction {
+    margin-top: 100px;
+    text-align: center;
+}
+
+main > .home-introduction > h2 {
+    font-size: 30px;
+}
+
+main > .home-introduction > p {
+    font-size: 18px;
+}
+
+footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
