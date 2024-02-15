@@ -3,12 +3,17 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
+import lombok.Getter;
 
-public class User {
-    private UserRecord userRecord;
+public abstract class User {
+    private final UserRecord userRecord;
+    // Getters and Setters for additional fields
+    @Getter
     private String firstName;
     private String lastName;
     private String address;
+    private Boolean is2FAEnabled;
+    private Boolean isPhoneNumberVerified;
 
     // Constructor
     public User(UserRecord userRecord, String firstName, String lastName, String address) {
@@ -16,11 +21,18 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        is2FAEnabled = true;
+        isPhoneNumberVerified = false;
     }
 
-    // Getters and Setters for additional fields
-    public String getFirstName() {
-        return firstName;
+    public User(UserRecord userRecord) {
+        this.userRecord = userRecord;
+        is2FAEnabled = true;
+        isPhoneNumberVerified = false;
+    }
+
+    public User getUser(){
+        return this;
     }
 
     public void setFirstName(String firstName) {
@@ -48,5 +60,19 @@ public class User {
         return userRecord;
     }
 
+    public Boolean getIs2FAEnabled() {
+        return is2FAEnabled;
+    }
 
+    public void setIs2FAEnabled(Boolean is2FAEnabled) {
+        this.is2FAEnabled = is2FAEnabled;
+    }
+
+    public Boolean getPhoneNumberVerified() {
+        return isPhoneNumberVerified;
+    }
+
+    public void setPhoneNumberVerified(Boolean phoneNumberVerified) {
+        isPhoneNumberVerified = phoneNumberVerified;
+    }
 }

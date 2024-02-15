@@ -31,17 +31,6 @@ class UserTest {
                 .build();
 
         FirebaseApp.initializeApp(options);
-        // Convert the file path to a Path object
-        Path filePath = Paths.get("src/main/resources/serviceAccountKey.json");
-        System.out.println(Files.exists(filePath));
-
-        // Check if the file exists
-        if (Files.exists(filePath)) {
-            System.out.println("Service account key file found.");
-        } else {
-            System.out.println("Service account key file not found.");
-            return; // Exit the method if the file is not found
-        }
     }
     @Test
     void getAllUsers() throws FirebaseAuthException {
@@ -55,6 +44,8 @@ class UserTest {
         // Iterate over all users and print their details
         while (iterator.hasNext()) {
             UserRecord user = iterator.next();
+
+            System.out.println(user.toString());
             System.out.println("User ID: " + user.getUid());
             System.out.println("Email: " + user.getEmail());
             System.out.println("Phone Number: " + user.getPhoneNumber());
@@ -82,15 +73,13 @@ class UserTest {
 
         UserRecord sashaRecord = FirebaseAuth.getInstance().createUser(userRequest);
 
-        User userSasha = new User(sashaRecord, "Sasha", "Velet", "1234 Main St");
+        User userSasha = new Patient(sashaRecord, "Sasha", "Velet", "1234 Main St");
 
         assertEquals("Sasha", userSasha.getFirstName());
         assertEquals("Velet", userSasha.getLastName());
         assertEquals("1234 Main St", userSasha.getAddress());
         assertEquals(sashaRecord.getPhoneNumber(), "+18125985490");
         assertEquals(sashaRecord, userSasha.getUserRecord());
-
-
     }
 
 }
