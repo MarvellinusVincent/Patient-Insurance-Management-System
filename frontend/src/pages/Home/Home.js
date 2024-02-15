@@ -9,9 +9,18 @@ export default function Home() {
           CareConnect<span>360</span>
         </h1>
         <nav>
-          <button>
-            <Link className="nav-link">Log in | Sign up</Link>
-          </button>
+          <ul>
+            <li>
+              <button>
+                <Link className="nav-link">Log in</Link>
+              </button>
+            </li>
+            <li>
+              <button>
+                <Link className="nav-link">Sign up</Link>
+              </button>
+            </li>
+          </ul>
         </nav>
       </header>
       <main>
