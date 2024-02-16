@@ -4,11 +4,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import lombok.Getter;
+import lombok.Setter;
 
-public abstract class User {
+@Getter
+@Setter
+public class User {
     private final UserRecord userRecord;
     // Getters and Setters for additional fields
-    @Getter
+    private String phoneNumber;
+    private String token;
     private String firstName;
     private String lastName;
     private String address;
@@ -16,8 +20,9 @@ public abstract class User {
     private Boolean isPhoneNumberVerified;
 
     // Constructor
-    public User(UserRecord userRecord, String firstName, String lastName, String address) {
+    public User(UserRecord userRecord, String phoneNumber, String firstName, String lastName, String address) {
         this.userRecord = userRecord;
+        this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -31,8 +36,16 @@ public abstract class User {
         isPhoneNumberVerified = false;
     }
 
-    public User getUser(){
-        return this;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
