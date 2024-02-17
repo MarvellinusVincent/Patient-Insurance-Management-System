@@ -1,10 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-    createUserWithEmailAndPassword,
-    onAuthStateChanged,
-  } from "firebase/auth";
-import { auth } from "./firebase-config";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 const RegisterPage = () => {
