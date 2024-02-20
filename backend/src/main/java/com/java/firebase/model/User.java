@@ -3,22 +3,47 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class User {
-    private UserRecord userRecord;
+    private final UserRecord userRecord;
+    // Getters and Setters for additional fields
+    private String phoneNumber;
+    private String token;
     private String firstName;
     private String lastName;
     private String address;
+    private Boolean is2FAEnabled;
+    private Boolean isPhoneNumberVerified;
 
     // Constructor
-    public User(UserRecord userRecord, String firstName, String lastName, String address) {
+    public User(UserRecord userRecord, String phoneNumber, String firstName, String lastName, String address) {
         this.userRecord = userRecord;
+        this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        is2FAEnabled = true;
+        isPhoneNumberVerified = false;
     }
 
-    // Getters and Setters for additional fields
+    public User(UserRecord userRecord) {
+        this.userRecord = userRecord;
+        is2FAEnabled = true;
+        isPhoneNumberVerified = false;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -48,5 +73,19 @@ public class User {
         return userRecord;
     }
 
+    public Boolean getIs2FAEnabled() {
+        return is2FAEnabled;
+    }
 
+    public void setIs2FAEnabled(Boolean is2FAEnabled) {
+        this.is2FAEnabled = is2FAEnabled;
+    }
+
+    public Boolean getPhoneNumberVerified() {
+        return isPhoneNumberVerified;
+    }
+
+    public void setPhoneNumberVerified(Boolean phoneNumberVerified) {
+        isPhoneNumberVerified = phoneNumberVerified;
+    }
 }
